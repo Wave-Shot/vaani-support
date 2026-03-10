@@ -7,8 +7,8 @@ export async function POST(req: NextRequest) {
     const audioFile = formData.get('audio') as File
     if (!audioFile) return NextResponse.json({ error: 'No audio file provided' }, { status: 400 })
 
-    const buffer = Buffer.from(await audioFile.arrayBuffer())
-    const result = await speechToText(buffer, audioFile.type || 'audio/webm')
+    const arrayBuffer = await audioFile.arrayBuffer()
+    const result = await speechToText(arrayBuffer, audioFile.type || 'audio/webm')
     return NextResponse.json(result)
   } catch (err) {
     console.error('STT error:', err)

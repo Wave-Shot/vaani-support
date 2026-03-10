@@ -4,8 +4,7 @@ const headers = () => ({
   'api-subscription-key': process.env.SARVAM_API_KEY!,
 })
 
-export async function speechToText(audioBlob: Buffer, mimeType = 'audio/wav'): Promise<{
-  transcript: string
+export async function speechToText(audioBlob: ArrayBuffer, mimeType = 'audio/wav'): Promise<{  transcript: string
   language_code: string
 }> {
   const formData = new FormData()
